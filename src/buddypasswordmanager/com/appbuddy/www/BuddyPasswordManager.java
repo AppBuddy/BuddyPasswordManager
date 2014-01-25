@@ -8,7 +8,6 @@ updated: 5/28/2013
 
 public class BuddyPasswordManager {
 	public static void main(String[] args) {
-        System.out.println("Hello World");
         System.out.println(System.getProperty("user.name"));
         GUI gui = new GUI();
     }
