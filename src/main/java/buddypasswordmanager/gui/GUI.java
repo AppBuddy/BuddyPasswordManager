@@ -7,10 +7,10 @@ updated: 5/28/2013
 */
 
 import javax.swing.*;
-import javax.swing.table.*; 
+import javax.swing.table.*;
 import javax.swing.UIManager.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;		//other things are buttons on top
+import java.awt.*; //other things are buttons on top
 import java.awt.event.*;//table website - usr - password
 import java.io.*;
 import java.io.FileInputStream;
@@ -23,13 +23,13 @@ public class GUI extends JFrame {
 	private DefaultTableModel modelTable;
 	private JTable table;
 	private BPasswordManagerTable bTable;
- 	
+
 	private JMenuBar bpmMenuBar;
-	private JMenu 	fileMenu, editMenu, viewMenu, helpMenu;
-	private JMenuItem 	fNew, fOpen, fSave, fClose, fLoad, fExit; 	//file
-	private JMenuItem 	eCut, eCopy, ePaste, eSelectAll, eExit; 	//edit
-	private JMenuItem 	vAll, vHidePasswords, vExit; 				//view
-	private JMenuItem 	hABPMHelp, hABOnline, hContactUs, hExit; 	//help
+	private JMenu fileMenu, editMenu, viewMenu, helpMenu;
+	private JMenuItem fNew, fOpen, fSave, fClose, fLoad, fExit; // file
+	private JMenuItem eCut, eCopy, ePaste, eSelectAll, eExit; // edit
+	private JMenuItem vAll, vHidePasswords, vExit; // view
+	private JMenuItem hABPMHelp, hABOnline, hContactUs, hExit; // help
 
 	private NewInformationGUI infogui;
 	private HelpGUI help;
@@ -44,49 +44,55 @@ public class GUI extends JFrame {
 		add(new BPasswordManagerTable());
 
 		setVisible(true);
-	} 
+	}
 
 	public class BPasswordManagerMenuBar extends JMenuBar {
 		public BPasswordManagerMenuBar() {
 
 			fileMenu = new JMenu("File");
-			fileMenu.setMnemonic(KeyEvent.VK_F);//key board navigation by ALT
-				fNew  			= new JMenuItem("New");
-				fOpen 			= new JMenuItem("Open");
-				fSave 			= new JMenuItem("Save/Coming Soon");
-				fLoad			= new JMenuItem("Load");
-				fExit			= new JMenuItem("Exit");
-			fileMenu.add(fNew);		fileMenu.add(fOpen);
+			fileMenu.setMnemonic(KeyEvent.VK_F);// key board navigation by ALT
+			fNew = new JMenuItem("New");
+			fOpen = new JMenuItem("Open");
+			fSave = new JMenuItem("Save/Coming Soon");
+			fLoad = new JMenuItem("Load");
+			fExit = new JMenuItem("Exit");
+			fileMenu.add(fNew);
+			fileMenu.add(fOpen);
 			fileMenu.add(fSave);
-			fileMenu.add(fLoad);	fileMenu.addSeparator();
+			fileMenu.add(fLoad);
+			fileMenu.addSeparator();
 			fileMenu.add(fExit);
 
 			editMenu = new JMenu("Edit");
 			editMenu.setMnemonic(KeyEvent.VK_E);
-				eCut  			= new JMenuItem("Cut");
-				eCopy 			= new JMenuItem("Copy");
-				ePaste 			= new JMenuItem("Paste");
-				eSelectAll		= new JMenuItem("SelectAll");
-			editMenu.add(eCut);		editMenu.add(eCopy);
-			editMenu.add(ePaste);	editMenu.addSeparator();
-			editMenu.add(eSelectAll); 
+			eCut = new JMenuItem("Cut");
+			eCopy = new JMenuItem("Copy");
+			ePaste = new JMenuItem("Paste");
+			eSelectAll = new JMenuItem("SelectAll");
+			editMenu.add(eCut);
+			editMenu.add(eCopy);
+			editMenu.add(ePaste);
+			editMenu.addSeparator();
+			editMenu.add(eSelectAll);
 
 			viewMenu = new JMenu("View");
 			viewMenu.setMnemonic(KeyEvent.VK_V);
-			 	vAll			= new JMenuItem("All");
-				vHidePasswords	= new JMenuItem("Hide Passwords");
-			viewMenu.add(vAll);		viewMenu.add(vHidePasswords);
+			vAll = new JMenuItem("All");
+			vHidePasswords = new JMenuItem("Hide Passwords");
+			viewMenu.add(vAll);
+			viewMenu.add(vHidePasswords);
 
 			helpMenu = new JMenu("Help");
 			helpMenu.setMnemonic(KeyEvent.VK_H);
-				hABPMHelp  		= new JMenuItem("App Buddy Help");
-				hABOnline 		= new JMenuItem("App Buddy Online");
-				hContactUs 		= new JMenuItem("Contact Us");
-			helpMenu.add(hABPMHelp);  helpMenu.add(hABOnline);
-			helpMenu.add(hContactUs); 
+			hABPMHelp = new JMenuItem("App Buddy Help");
+			hABOnline = new JMenuItem("App Buddy Online");
+			hContactUs = new JMenuItem("Contact Us");
+			helpMenu.add(hABPMHelp);
+			helpMenu.add(hABOnline);
+			helpMenu.add(hContactUs);
 
-			bpmMenuBar = new JMenuBar();	
-			bpmMenuBar.add(fileMenu);	
+			bpmMenuBar = new JMenuBar();
+			bpmMenuBar.add(fileMenu);
 			bpmMenuBar.add(editMenu);
 			bpmMenuBar.add(viewMenu);
 			bpmMenuBar.add(helpMenu);
@@ -95,7 +101,7 @@ public class GUI extends JFrame {
 
 			fNew.addActionListener(new openNew());
 			hABPMHelp.addActionListener(new openHelpMenu());
-			fLoad.addActionListener(new loadFile());				
+			fLoad.addActionListener(new loadFile());
 		}
 	}
 
@@ -103,38 +109,38 @@ public class GUI extends JFrame {
 		public BPasswordManagerTable() {
 			setLayout(null);
 			modelTable = new DefaultTableModel() {
-				public boolean isCellEditable( int rowIndex, int mColIndex ) {
-        			return false;
-        		}
+				public boolean isCellEditable(int rowIndex, int mColIndex) {
+					return false;
+				}
 			};
 
-			table 			= new JTable(modelTable);
-			tableScroller 	= new JScrollPane(table);
+			table = new JTable(modelTable);
+			tableScroller = new JScrollPane(table);
 
 			add(tableScroller);
 			tableScroller.setBounds(1, 1, 600, 553);
 
-			setUpTable();		
+			setUpTable();
 			setBounds(0, 0, 600, 600);
 		}
 
 		public void setUpTable() {
-			String[] colTitles = {"Websites", "Usernames", "Passwords"};
-        	for (int i = 0; i < 3; i++) {
-            	modelTable.addColumn(colTitles[i]);
-       		}
-        
-        	table.getTableHeader().setResizingAllowed(false);
-        	table.getTableHeader().setReorderingAllowed(false);
-        	table.setColumnSelectionAllowed(true);
-        	table.setRowSelectionAllowed(true);
-        	table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        	table.setRowHeight(30);
+			String[] colTitles = { "Websites", "Usernames", "Passwords" };
+			for (int i = 0; i < 3; i++) {
+				modelTable.addColumn(colTitles[i]);
+			}
 
-        	modelTable.setColumnCount(3);
-        	modelTable.setRowCount(25);
+			table.getTableHeader().setResizingAllowed(false);
+			table.getTableHeader().setReorderingAllowed(false);
+			table.setColumnSelectionAllowed(true);
+			table.setRowSelectionAllowed(true);
+			table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+			table.setRowHeight(30);
 
-        	populateTable();
+			modelTable.setColumnCount(3);
+			modelTable.setRowCount(25);
+
+			populateTable();
 		}
 	}
 
@@ -142,29 +148,29 @@ public class GUI extends JFrame {
 		int row = 0;
 		int col = 0;
 		String nameOfUser = System.getProperty("user.name");
-		System.out.println("The name of the user is " + nameOfUser); 
+		System.out.println("The name of the user is " + nameOfUser);
 		String entry;
 
 		File filePath = new File("/Users/" + nameOfUser + "/Documents/Buddy Information.txt");
 		System.out.println("The path that the file will be in is " + filePath);
-		
-		try{
+
+		try {
 			Scanner input = new Scanner(filePath);
 
-			while(input.hasNextLine()) {
+			while (input.hasNextLine()) {
 				entry = input.nextLine();
-				System.out.println(entry);	
-				if(col >= 3) {
+				System.out.println(entry);
+				if (col >= 3) {
 					col = 0;
 				}
 				modelTable.setValueAt(entry, row, col);
-					
-				if(col == 2) {
+
+				if (col == 2) {
 					row++;
 				}
-				col++;				
+				col++;
 			}
-		}catch(Exception e) {
+		} catch (Exception e) {
 			System.err.format("File not Found");
 		}
 	}
@@ -186,5 +192,4 @@ public class GUI extends JFrame {
 			populateTable();
 		}
 	}
-
 }

@@ -25,7 +25,7 @@ public class HelpGUI {
 		frame.getContentPane();
 
 		label = new JLabel("About this Program");
-	
+
 		textArea = new JTextArea(5, 20);
 		textArea.setText("This is the help section");
 		textArea.setFont(new Font("Comic Sans", Font.BOLD, 20));
@@ -41,14 +41,14 @@ public class HelpGUI {
 
 		button = new JButton("Button");
 
-		button.addActionListener(new Action());	
+		button.addActionListener(new Action());
 	}
 
 	static class Action implements ActionListener {
-		public void actionPerformed (ActionEvent e) {
+		public void actionPerformed(ActionEvent e) {
 			JFrame frame2 = new JFrame("Clicked!");
 			frame2.setVisible(true);
-			frame2.setSize(200,200);
+			frame2.setSize(200, 200);
 			JLabel label2 = new JLabel("Button has been clicked");
 			JPanel panel2 = new JPanel();
 			frame2.add(panel2);
