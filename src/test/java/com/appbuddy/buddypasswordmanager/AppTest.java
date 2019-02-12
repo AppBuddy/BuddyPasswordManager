@@ -1,4 +1,4 @@
-package buddypasswordmanager;
+package com.appbuddy.buddypasswordmanager;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
