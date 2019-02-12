@@ -1,4 +1,4 @@
-package buddypasswordmanager.com.appbuddy.www;
+package com.appbuddy.buddypasswordmanager.gui;
 
 /**
 @author Gavin Bauman - Christopher Bell - Gregory Degruy - Adrian Smith-Thompson

@@ -1,4 +1,4 @@
-package buddypasswordmanager;
+package com.appbuddy.buddypasswordmanager;
 
 /**
  * Hello world!
