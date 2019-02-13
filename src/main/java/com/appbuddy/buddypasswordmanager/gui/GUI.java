@@ -1,20 +1,29 @@
 package com.appbuddy.buddypasswordmanager.gui;
 
-/**
-@author Gavin Bauman - Christopher Bell - Gregory Degruy - Adrian Smith-Thompson
-updated: 5/28/2013
-@version 2.0
-*/
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.io.File;
+import java.util.Scanner;
 
-import javax.swing.*;
-import javax.swing.table.*;
-import javax.swing.UIManager.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JList;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*; //other things are buttons on top
-import java.awt.event.*;//table website - usr - password
-import java.io.*;
-import java.io.FileInputStream;
-import java.util.*;
+
+/**
+ * @author Gavin Bauman - Christopher Bell - Gregory Degruy - Adrian
+ *         Smith-Thompson updated: 5/28/2013
+ * @version 2.0
+ */
+
 
 public class GUI extends JFrame {
 	private JButton fileBtn;

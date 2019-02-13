@@ -1,16 +1,24 @@
 package com.appbuddy.buddypasswordmanager.gui;
 
-/**
-@author Gavin Bauman - Christopher Bell - Gregory Degruy - Adrian Smith-Thompson
-updated: 5/28/2013
-@version 2.0
-*/
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import java.io.*;
-import java.util.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+/**
+ * @author Gavin Bauman - Christopher Bell - Gregory Degruy - Adrian
+ *         Smith-Thompson updated: 5/28/2013
+ * @version 2.0
+ */
+
 
 public class NewInformationGUI {
 	private JFrame frame;

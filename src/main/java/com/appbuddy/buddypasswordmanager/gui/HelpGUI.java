@@ -1,14 +1,21 @@
 package com.appbuddy.buddypasswordmanager.gui;
 
-/**
-@author Gavin Bauman - Christopher Bell - Gregory Degruy - Adrian Smith-Thompson
-updated: 5/28/2013
-@version 2.0
-*/
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
+/**
+ * @author Gavin Bauman - Christopher Bell - Gregory Degruy - Adrian
+ *         Smith-Thompson updated: 5/28/2013
+ * @version 2.0
+ */
 
 public class HelpGUI {
 	JFrame frame;
