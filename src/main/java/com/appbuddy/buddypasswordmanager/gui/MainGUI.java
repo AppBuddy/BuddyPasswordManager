@@ -24,8 +24,7 @@ import javax.swing.table.DefaultTableModel;
  * @version 2.0
  */
 
-
-public class GUI extends JFrame {
+public class MainGUI extends JFrame {
 	private JButton fileBtn;
 	private JList fileOptions, viewOptions, editOptions, helpOptions;
 	private JScrollPane tableUPWContainer, fileOptionsPane, tableScroller;
@@ -43,7 +42,7 @@ public class GUI extends JFrame {
 	private NewInformationGUI infogui;
 	private HelpGUI help;
 
-	public GUI() {
+	public MainGUI() {
 		setTitle("Buddy Password Manager");
 		getContentPane();
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
