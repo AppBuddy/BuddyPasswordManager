@@ -19,7 +19,6 @@ import javax.swing.JTextField;
  * @version 2.0
  */
 
-
 public class NewInformationGUI {
 	private JFrame frame;
 	private JFrame warningFrame;
