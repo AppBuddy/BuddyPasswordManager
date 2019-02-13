@@ -1,4 +1,9 @@
-*.class
+.settings
+.vscode
+.project
+.classpath
+/target
+
 
 # Package Files #
 *.jar

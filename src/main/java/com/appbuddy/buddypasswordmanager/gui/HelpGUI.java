@@ -1,14 +1,21 @@
-package buddypasswordmanager.com.appbuddy.www;
+package com.appbuddy.buddypasswordmanager.gui;
+
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 /**
-@author Gavin Bauman - Christopher Bell - Gregory Degruy - Adrian Smith-Thompson
-updated: 5/28/2013
-@version 2.0
-*/
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+ * @author Gavin Bauman - Christopher Bell - Gregory Degruy - Adrian
+ *         Smith-Thompson updated: 5/28/2013
+ * @version 2.0
+ */
 
 public class HelpGUI {
 	JFrame frame;
@@ -25,7 +32,7 @@ public class HelpGUI {
 		frame.getContentPane();
 
 		label = new JLabel("About this Program");
-	
+
 		textArea = new JTextArea(5, 20);
 		textArea.setText("This is the help section");
 		textArea.setFont(new Font("Comic Sans", Font.BOLD, 20));
@@ -41,14 +48,14 @@ public class HelpGUI {
 
 		button = new JButton("Button");
 
-		button.addActionListener(new Action());	
+		button.addActionListener(new Action());
 	}
 
 	static class Action implements ActionListener {
-		public void actionPerformed (ActionEvent e) {
+		public void actionPerformed(ActionEvent e) {
 			JFrame frame2 = new JFrame("Clicked!");
 			frame2.setVisible(true);
-			frame2.setSize(200,200);
+			frame2.setSize(200, 200);
 			JLabel label2 = new JLabel("Button has been clicked");
 			JPanel panel2 = new JPanel();
 			frame2.add(panel2);

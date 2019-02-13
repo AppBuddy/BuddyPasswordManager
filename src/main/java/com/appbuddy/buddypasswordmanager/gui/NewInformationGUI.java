@@ -1,16 +1,23 @@
-package buddypasswordmanager.com.appbuddy.www;
+package com.appbuddy.buddypasswordmanager.gui;
+
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
-@author Gavin Bauman - Christopher Bell - Gregory Degruy - Adrian Smith-Thompson
-updated: 5/28/2013
-@version 2.0
-*/
-
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import java.io.*;
-import java.util.*;
+ * @author Gavin Bauman - Christopher Bell - Gregory Degruy - Adrian
+ *         Smith-Thompson updated: 5/28/2013
+ * @version 2.0
+ */
 
 public class NewInformationGUI {
 	private JFrame frame;
@@ -42,33 +49,30 @@ public class NewInformationGUI {
 
 		panel = new JPanel(null);
 		panel.setBounds(0, 0, 300, 500);
-		
+
 		frame.add(panel);
 
-		instructionsLabel		= new JLabel("Enter Account Information");
+		instructionsLabel = new JLabel("Enter Account Information");
 
-		websiteLabel 			= new JLabel("Website Name");
-		websiteLabelWarning 	= new JLabel("<html>*Please enter a "
-										+"   website.<html>");
+		websiteLabel = new JLabel("Website Name");
+		websiteLabelWarning = new JLabel("<html>*Please enter a " + "   website.<html>");
 		websiteLabelWarning.setForeground(Color.RED);
 		websiteLabelWarning.setVisible(false);
-		websiteTextField 		= new JTextField();
+		websiteTextField = new JTextField();
 
-		usernameLabel			= new JLabel("Username");
-		usernameLabelWarning 	= new JLabel("<html>*Please enter a "
-										+"  username.<html>");
+		usernameLabel = new JLabel("Username");
+		usernameLabelWarning = new JLabel("<html>*Please enter a " + "  username.<html>");
 		usernameLabelWarning.setForeground(Color.RED);
 		usernameLabelWarning.setVisible(false);
-		usernameTextField		= new JTextField();
+		usernameTextField = new JTextField();
 
-		passwordLabel			= new JLabel("Password");
-		passwordLabelWarning	= new JLabel("<html>*Please enter a "
-										+"  password.<html>");
+		passwordLabel = new JLabel("Password");
+		passwordLabelWarning = new JLabel("<html>*Please enter a " + "  password.<html>");
 		passwordLabelWarning.setForeground(Color.RED);
 		passwordLabelWarning.setVisible(false);
-		passwordTextField		= new JTextField();
+		passwordTextField = new JTextField();
 
-		submitButton			= new JButton("Submit");
+		submitButton = new JButton("Submit");
 
 		instructionsLabel.setBounds(5, 0, 200, 50);
 
@@ -101,85 +105,81 @@ public class NewInformationGUI {
 	}
 
 	public String getWebsite() {
-		return websiteTextField.getText();	
+		return websiteTextField.getText();
 	}
+
 	public String getUsername() {
-		return usernameTextField.getText();	
+		return usernameTextField.getText();
 	}
+
 	public String getPassword() {
-		return passwordTextField.getText();	
+		return passwordTextField.getText();
 	}
+
 	public Boolean getSubmitButtonHit() {
 		return submitButtonHit;
 	}
 
 	public void writeNewEntryToFile() {
 		String operatingSystem = System.getProperty("os.name");
-		if(operatingSystem.equals("Windows 7") || operatingSystem.equals("Windows 8")) { 
-			try{
-				FileWriter outFile 	= new FileWriter("C:/Users/"+nameOfUser+"/Documents/Buddy Information.txt",true);
-				/*true for appending/add elements to existing file*/
-				PrintWriter printOutFile 	= new PrintWriter(outFile);
-			
-				printOutFile.printf(getWebsite()+"\n"+getUsername()+"\n"+getPassword()+"\r\n");
-				printOutFile.close();
-			}catch(IOException ex){
-				System.err.format("ERROR: "+ex);
-			}
-		}
-		else if(operatingSystem.equals("Windows XP")) {
-			try{
-				FileWriter outFile 	= new FileWriter("C:/Documents and Settings/"+nameOfUser+"/My Documents/Buddy Information.txt",true);
-				PrintWriter printOutFile 	= new PrintWriter(outFile);
+		if (operatingSystem.equals("Windows 7") || operatingSystem.equals("Windows 8")) {
+			try {
+				FileWriter outFile = new FileWriter("C:/Users/" + nameOfUser + "/Documents/Buddy Information.txt",
+						true);
+				/* true for appending/add elements to existing file */
+				PrintWriter printOutFile = new PrintWriter(outFile);
 
-				printOutFile.printf(getWebsite()+"\n"+getUsername()+"\n"+getPassword()+"\r\n");
+				printOutFile.printf(getWebsite() + "\n" + getUsername() + "\n" + getPassword() + "\r\n");
 				printOutFile.close();
-			}catch(IOException ex){
-				System.err.format("ERROR: "+ex);
+			} catch (IOException ex) {
+				System.err.format("ERROR: " + ex);
 			}
-		}
-		else if(operatingSystem.equals("Mac OS X")) {
-			try{
-				FileWriter outFile 	= new FileWriter("/Users/"+nameOfUser+"/Documents/Buddy Information.txt",true);
-				PrintWriter printOutFile 	= new PrintWriter(outFile);
+		} else if (operatingSystem.equals("Windows XP")) {
+			try {
+				FileWriter outFile = new FileWriter(
+						"C:/Documents and Settings/" + nameOfUser + "/My Documents/Buddy Information.txt", true);
+				PrintWriter printOutFile = new PrintWriter(outFile);
 
-				printOutFile.printf(getWebsite()+"\n"+getUsername()+"\n"+getPassword());
+				printOutFile.printf(getWebsite() + "\n" + getUsername() + "\n" + getPassword() + "\r\n");
 				printOutFile.close();
-			}catch(IOException ex){
-				System.err.format("ERROR: "+ex);
+			} catch (IOException ex) {
+				System.err.format("ERROR: " + ex);
+			}
+		} else if (operatingSystem.equals("Mac OS X")) {
+			try {
+				FileWriter outFile = new FileWriter("/Users/" + nameOfUser + "/Documents/Buddy Information.txt", true);
+				PrintWriter printOutFile = new PrintWriter(outFile);
+
+				printOutFile.printf(getWebsite() + "\n" + getUsername() + "\n" + getPassword());
+				printOutFile.close();
+			} catch (IOException ex) {
+				System.err.format("ERROR: " + ex);
 			}
 		}
 	}
 
 	public class SubmitButtonPressed implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			if(getWebsite().equals("") && getUsername().equals("") && getPassword().equals("")) {
+			if (getWebsite().equals("") && getUsername().equals("") && getPassword().equals("")) {
 				websiteLabelWarning.setVisible(true);
 				usernameLabelWarning.setVisible(true);
 				passwordLabelWarning.setVisible(true);
-			}
-			else if(getWebsite().equals("")) {
+			} else if (getWebsite().equals("")) {
 				websiteLabelWarning.setVisible(true);
-			}
-			else if(getUsername().equals("")) {
+			} else if (getUsername().equals("")) {
 				usernameLabel.setVisible(true);
-			}
-			else if(getPassword().equals("")) {
+			} else if (getPassword().equals("")) {
 				passwordLabelWarning.setVisible(true);
-			}
-			else if(getWebsite().equals("") && getUsername().equals("")) {
+			} else if (getWebsite().equals("") && getUsername().equals("")) {
 				websiteLabelWarning.setVisible(true);
 				usernameLabelWarning.setVisible(true);
-			}
-			else if(getUsername().equals("") && getPassword().equals("")) {
+			} else if (getUsername().equals("") && getPassword().equals("")) {
 				usernameLabelWarning.setVisible(true);
 				passwordLabelWarning.setVisible(true);
-			}
-			else if(getPassword().equals("") && getWebsite().equals("")) {
+			} else if (getPassword().equals("") && getWebsite().equals("")) {
 				passwordLabelWarning.setVisible(true);
 				websiteLabelWarning.setVisible(true);
-			}
-			else {
+			} else {
 				writeNewEntryToFile();
 				frame.setVisible(false);
 			}
