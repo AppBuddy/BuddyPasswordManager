@@ -54,7 +54,7 @@ public class HelpGUI {
         this.textArea.setEditable(false);
     }
 
-    static class Action implements ActionListener {
+    private static class Action implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             LOGGER.log(Level.INFO, "Help Button Clicked");
             JFrame frame2 = new JFrame("Clicked!");
