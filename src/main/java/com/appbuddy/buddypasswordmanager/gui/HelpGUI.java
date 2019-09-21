@@ -1,9 +1,10 @@
 package com.appbuddy.buddypasswordmanager.gui;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,48 +19,51 @@ import javax.swing.JTextArea;
  */
 
 public class HelpGUI {
-	JFrame frame;
-	JPanel panel;
-	JLabel label;
-	JTextArea textArea;
-	JScrollPane scroll;
-	JButton button;
+    private static final Logger LOGGER = Logger.getLogger(HelpGUI.class.getName());
+    private JFrame frame;
+    private JPanel panel;
+    private JLabel label;
+    private JTextArea textArea;
+    private JScrollPane scroll;
+    private JButton button;
 
-	public HelpGUI() {
-		frame = new JFrame("Help");
-		frame.setSize(350, 370);
-		frame.setVisible(true);
-		frame.getContentPane();
+    public HelpGUI() {
+        this.frame = new JFrame("Help");
+        this.label = new JLabel("About this Program");
+        this.textArea = new JTextArea(5, 20);
+        this.scroll = new JScrollPane(textArea);
+        this.button = new JButton("Button");
+        this.initFrame();
+        this.initTextArea();
+        this.frame.add(scroll);
+        this.scroll.setBounds(0, 0, 350, 370);
+        this.button.addActionListener(new Action());
+    }
 
-		label = new JLabel("About this Program");
+    private void initFrame() {
+        this.frame.setSize(350, 370);
+        this.frame.setVisible(true);
+        this.frame.getContentPane();
+    }
 
-		textArea = new JTextArea(5, 20);
-		textArea.setText("This is the help section");
-		textArea.setFont(new Font("Comic Sans", Font.BOLD, 20));
-		textArea.setWrapStyleWord(true);
-		textArea.setLineWrap(true);
-		textArea.setEditable(false);
+    private void initTextArea() {
+        this.textArea.setText("Help!");
+        this.textArea.setFont(new Font("Comic Sans", Font.BOLD, 20));
+        this.textArea.setWrapStyleWord(true);
+        this.textArea.setLineWrap(true);
+        this.textArea.setEditable(false);
+    }
 
-		scroll = new JScrollPane(textArea);
-
-		frame.add(scroll);
-
-		scroll.setBounds(0, 0, 350, 370);
-
-		button = new JButton("Button");
-
-		button.addActionListener(new Action());
-	}
-
-	static class Action implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			JFrame frame2 = new JFrame("Clicked!");
-			frame2.setVisible(true);
-			frame2.setSize(200, 200);
-			JLabel label2 = new JLabel("Button has been clicked");
-			JPanel panel2 = new JPanel();
-			frame2.add(panel2);
-			panel2.add(label2);
-		}
-	}
+    private static class Action implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            LOGGER.log(Level.INFO, "Help Button Clicked");
+            JFrame frame2 = new JFrame("Clicked!");
+            frame2.setVisible(true);
+            frame2.setSize(200, 200);
+            JLabel label2 = new JLabel("Button has been clicked");
+            JPanel panel2 = new JPanel();
+            frame2.add(panel2);
+            panel2.add(label2);
+        }
+    }
 }
