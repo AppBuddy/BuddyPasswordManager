@@ -2,15 +2,20 @@
 
 A simple password manager created in 2013.
 
-## Running
+## Setup Requirements
 
-1. Install the latest version of maven.
-1. Install the latest version of Java.
-1. Run the following command: (I don't know why running the test cause an error as of now)
+1. Java
+1. Maven
+
+## Compiling
+
+1. Run the following command:
 
 ```bash
     mvn clean package -DskipTests
 ```
+
+## Running
 
 1. Run the following to open jar
 
