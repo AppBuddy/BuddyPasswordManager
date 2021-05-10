@@ -1,9 +1,9 @@
 package com.appbuddy.buddypasswordmanager.model;
 
 public class Entry {
-    private String email;
-    private String password;
-    private String siteName;
+    private final String email;
+    private final String password;
+    private final String siteName;
 
     public Entry(String email, String password, String siteName) {
         this.email = email;
@@ -19,23 +19,11 @@ public class Entry {
         return this.email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getPassword() {
         return this.password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getSiteName() {
         return this.siteName;
-    }
-
-    public void setSiteName(String siteName) {
-        this.siteName = siteName;
     }
 }
