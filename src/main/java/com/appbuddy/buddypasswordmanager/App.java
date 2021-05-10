@@ -3,12 +3,10 @@ package com.appbuddy.buddypasswordmanager;
 import com.appbuddy.buddypasswordmanager.gui.MainGUI;
 
 /**
- * Hello world!
- *
+ * App start
  */
 public class App {
     public static void main(String[] args) {
-        System.out.println(System.getProperty("user.name"));
-        MainGUI gui = new MainGUI();
+        var gui = new MainGUI();
     }
 }

@@ -14,8 +14,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
- * @author Gavin Bauman - Christopher Bell - Gregory Degruy - Adrian
- *         Smith-Thompson updated: 5/28/2013
+ * @author Gavin Bauman
+ * @author Christopher Bell
+ * @author Gregory Degruy
+ * @author Adrian Smith-Thompson
  * @version 2.0
  */
 
@@ -36,7 +38,7 @@ public class NewInformationGUI {
 
 	private JButton submitButton;
 
-	private Boolean submitButtonHit = new Boolean(false);
+	private Boolean submitButtonHit = Boolean.FALSE;
 	private String nameOfUser = System.getProperty("user.name");
 
 	public NewInformationGUI() {

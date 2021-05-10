@@ -13,14 +13,15 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 /**
- * @author Gavin Bauman - Christopher Bell - Gregory Degruy - Adrian
- *         Smith-Thompson updated: 5/28/2013
+ * @author Gavin Bauman
+ * @author Christopher Bell
+ * @author Gregory Degruy
+ * @author Adrian Smith-Thompson
  * @version 2.0
  */
-
 public class HelpGUI {
     private static final Logger LOGGER = Logger.getLogger(HelpGUI.class.getName());
-    private JFrame frame;
+    private final JFrame frame;
     private JPanel panel;
     private JLabel label;
     private JTextArea textArea;
