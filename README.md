@@ -4,15 +4,15 @@ A simple password manager created in 2013.
 
 ## Setup Requirements
 
-1. Java
-1. Maven
+1. Java 11
+1. Maven 3+
 
 ## Compiling
 
 1. Run the following command:
 
 ```bash
-    mvn clean package -DskipTests
+    mvn clean package
 ```
 
 ## Running
@@ -20,5 +20,5 @@ A simple password manager created in 2013.
 1. Run the following to open jar
 
 ```bash
-    java -jar target/buddypasswordmanager-1.0-SNAPSHOT-jar-with-dependencies.jar
+    java -jar target/buddypasswordmanager-{version_number}-SNAPSHOT-jar-with-dependencies.jar
 ```
