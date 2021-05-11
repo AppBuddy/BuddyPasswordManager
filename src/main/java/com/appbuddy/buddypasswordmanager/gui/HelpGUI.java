@@ -22,23 +22,19 @@ import javax.swing.JTextArea;
 public class HelpGUI {
     private static final Logger LOGGER = Logger.getLogger(HelpGUI.class.getName());
     private final JFrame frame;
-    private JPanel panel;
-    private JLabel label;
-    private JTextArea textArea;
-    private JScrollPane scroll;
-    private JButton button;
+    private final JTextArea textArea;
 
     public HelpGUI() {
         this.frame = new JFrame("Help");
-        this.label = new JLabel("About this Program");
+        var label = new JLabel("About this Program");
         this.textArea = new JTextArea(5, 20);
-        this.scroll = new JScrollPane(textArea);
-        this.button = new JButton("Button");
+        var scroll = new JScrollPane(textArea);
+        var button = new JButton("Button");
         this.initFrame();
         this.initTextArea();
         this.frame.add(scroll);
-        this.scroll.setBounds(0, 0, 350, 370);
-        this.button.addActionListener(new Action());
+        scroll.setBounds(0, 0, 350, 370);
+        button.addActionListener(new Action());
     }
 
     private void initFrame() {
