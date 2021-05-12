@@ -15,7 +15,7 @@ public final class MainGUI extends JFrame {
         this.getContentPane();
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setBounds(600, 400, 600, 600);
-        this.setJMenuBar(new BPMMenuBar());
+        this.setJMenuBar(new MenuBar());
         this.add(new EntryListTable());
         setVisible(true);
     }

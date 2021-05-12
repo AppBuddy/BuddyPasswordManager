@@ -1,4 +1,4 @@
-package com.appbuddy.buddypasswordmanager.model;
+package com.appbuddy.buddypasswordmanager.models;
 
 public class Entry {
     private final String email;
