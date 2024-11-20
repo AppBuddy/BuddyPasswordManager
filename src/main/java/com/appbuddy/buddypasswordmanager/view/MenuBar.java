@@ -1,6 +1,7 @@
 package com.appbuddy.buddypasswordmanager.view;
 
 import com.appbuddy.buddypasswordmanager.services.BuddyPasswordManagerService;
+import com.appbuddy.buddypasswordmanager.view.windows.AddAccountWindow;
 import com.appbuddy.buddypasswordmanager.view.windows.HelpWindow;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -136,7 +137,7 @@ public class MenuBar extends JMenuBar {
 
   public static class OpenNewAction implements ActionListener {
     public void actionPerformed(ActionEvent e) {
-      new AddAccountGUI();
+      new AddAccountWindow();
     }
   }
 

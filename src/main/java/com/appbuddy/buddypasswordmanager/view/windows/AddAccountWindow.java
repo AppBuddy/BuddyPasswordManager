@@ -1,4 +1,4 @@
-package com.appbuddy.buddypasswordmanager.view;
+package com.appbuddy.buddypasswordmanager.view.windows;
 
 import com.appbuddy.buddypasswordmanager.actions.SubmitButtonAction;
 import java.awt.Color;
@@ -16,7 +16,7 @@ import javax.swing.JTextField;
  * @version 2.0
  */
 
-public class AddAccountGUI {
+public class AddAccountWindow {
   private final JFrame frame;
   private JLabel websiteLabelWarning;
   private JLabel usernameLabelWarning;
@@ -25,7 +25,7 @@ public class AddAccountGUI {
   private JTextField usernameTextField;
   private JTextField passwordTextField;
 
-  public AddAccountGUI() {
+  public AddAccountWindow() {
     frame = new JFrame();
     frame.setTitle("Enter New Account");
     frame.setVisible(true);
