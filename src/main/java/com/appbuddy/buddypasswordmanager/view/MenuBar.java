@@ -1,13 +1,11 @@
 package com.appbuddy.buddypasswordmanager.view;
 
-import com.appbuddy.buddypasswordmanager.services.BuddyPasswordManagerService;
-import com.appbuddy.buddypasswordmanager.view.windows.AddAccountWindow;
-import com.appbuddy.buddypasswordmanager.view.windows.HelpWindow;
+import com.appbuddy.buddypasswordmanager.actions.menubar.LoadFileAction;
+import com.appbuddy.buddypasswordmanager.actions.menubar.OpenHelpMenuAction;
+import com.appbuddy.buddypasswordmanager.actions.menubar.OpenNewAction;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 /**
@@ -133,23 +131,5 @@ public class MenuBar extends JMenuBar {
     menuBar.add(viewMenu);
     menuBar.add(helpMenu);
     this.add(menuBar);
-  }
-
-  public static class OpenNewAction implements ActionListener {
-    public void actionPerformed(ActionEvent e) {
-      new AddAccountWindow();
-    }
-  }
-
-  public static class OpenHelpMenuAction implements ActionListener {
-    public void actionPerformed(ActionEvent e) {
-      new HelpWindow();
-    }
-  }
-
-  public static class LoadFileAction implements ActionListener {
-    public void actionPerformed(ActionEvent e) {
-      BuddyPasswordManagerService.populateTable();
-    }
   }
 }

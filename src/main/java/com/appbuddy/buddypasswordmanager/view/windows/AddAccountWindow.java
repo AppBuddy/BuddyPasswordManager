@@ -17,6 +17,7 @@ import javax.swing.JTextField;
  */
 
 public class AddAccountWindow {
+
   private final JFrame frame;
   private JLabel websiteLabelWarning;
   private JLabel usernameLabelWarning;

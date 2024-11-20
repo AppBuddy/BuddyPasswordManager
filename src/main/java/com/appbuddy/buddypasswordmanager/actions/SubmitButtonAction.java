@@ -10,9 +10,11 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 
 @AllArgsConstructor
 @Data
+@Slf4j
 public class SubmitButtonAction implements ActionListener {
 
   private final JLabel websiteLabelWarning;
