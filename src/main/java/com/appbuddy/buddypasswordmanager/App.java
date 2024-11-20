@@ -1,12 +1,14 @@
 package com.appbuddy.buddypasswordmanager;
 
-import com.appbuddy.buddypasswordmanager.gui.MainGUI;
+import com.appbuddy.buddypasswordmanager.view.windows.MainWindow;
 
 /**
- * App start
+ * Represents the starting point for the application. It will create the main window.
  */
 public class App {
-    public static void main(String[] args) {
-        var gui = new MainGUI();
-    }
+  public static void main(String[] args) {
+
+    var mainWindow = new MainWindow();
+    mainWindow.initWindow();
+  }
 }
