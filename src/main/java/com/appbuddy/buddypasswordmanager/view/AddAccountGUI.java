@@ -27,7 +27,7 @@ public class AddAccountGUI {
 
   public AddAccountGUI() {
     frame = new JFrame();
-    frame.setTitle("Enter New Information");
+    frame.setTitle("Enter New Account");
     frame.setVisible(true);
     frame.setResizable(false);
     frame.setSize(350, 500);
@@ -62,7 +62,7 @@ public class AddAccountGUI {
     var submitButton = new JButton("Submit");
     submitButton.setBounds(100, 370, 100, 40);
     submitButton.addActionListener(new SubmitButtonAction(websiteLabelWarning, usernameLabelWarning,
-        passwordLabelWarning, frame));
+        passwordLabelWarning, websiteTextField, usernameTextField, passwordTextField, frame));
     return submitButton;
   }
 

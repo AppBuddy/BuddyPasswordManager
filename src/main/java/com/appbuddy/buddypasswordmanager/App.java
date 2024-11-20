@@ -1,6 +1,6 @@
 package com.appbuddy.buddypasswordmanager;
 
-import com.appbuddy.buddypasswordmanager.view.windows.MainWindow;
+import com.appbuddy.buddypasswordmanager.services.BuddyPasswordManagerService;
 
 /**
  * Represents the starting point for the application. It will create the main window.
@@ -8,7 +8,6 @@ import com.appbuddy.buddypasswordmanager.view.windows.MainWindow;
 public class App {
   public static void main(String[] args) {
 
-    var mainWindow = new MainWindow();
-    mainWindow.initWindow();
+    var buddyPasswordManagerService = new BuddyPasswordManagerService();
   }
 }

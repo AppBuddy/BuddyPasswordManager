@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -17,36 +18,39 @@ public class SubmitButtonAction implements ActionListener {
   private final JLabel websiteLabelWarning;
   private final JLabel usernameLabelWarning;
   private final JLabel passwordLabelWarning;
+  private final JTextField websiteTextField;
+  private final JTextField usernameTextField;
+  private final JTextField passwordTextField;
   private final JFrame frame;
 
   public void actionPerformed(ActionEvent e) {
-    var websiteLabel = websiteLabelWarning.getText();
-    var usernameLabel = usernameLabelWarning.getText();
-    var passwordLabel = passwordLabelWarning.getText();
+    var website = websiteTextField.getText();
+    var username = usernameTextField.getText();
+    var password = passwordTextField.getText();
 
-    if(websiteLabel.isEmpty()) {
+    if(website.isEmpty()) {
       websiteLabelWarning.setVisible(true);
     }
 
-    if(usernameLabel.isEmpty()) {
+    if(username.isEmpty()) {
       usernameLabelWarning.setVisible(true);
     }
 
-    if(passwordLabel.isEmpty()) {
+    if(password.isEmpty()) {
       passwordLabelWarning.setVisible(true);
     }
 
-    attemptSaveAndReloadWindow(websiteLabel, usernameLabel, passwordLabel);
+    attemptSaveAndReloadWindow(website, username, password);
   }
 
-  public void attemptSaveAndReloadWindow(String websiteLabel, String usernameLabel, String passwordLabel) {
+  public void attemptSaveAndReloadWindow(String website, String username, String password) {
 
-    if(!websiteLabel.isEmpty()
-        && !usernameLabel.isEmpty()
-        && !passwordLabel.isEmpty()) {
+    if(!website.isEmpty()
+        && !username.isEmpty()
+        && !password.isEmpty()) {
 
       frame.setVisible(false);
-      BuddyPasswordManagerService.saveAccount(Constants.USERNAME, websiteLabel, usernameLabel, passwordLabel);
+      BuddyPasswordManagerService.saveAccount(Constants.USERNAME, website, username, password);
       BuddyPasswordManagerService.populateTable();
     }
   }

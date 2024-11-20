@@ -12,12 +12,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Objects;
 import java.util.Scanner;
+import lombok.extern.slf4j.Slf4j;
 
 /**
- *
+ * Represents the main service for interacting with the windows and actions.
  */
-public final class BuddyPasswordManagerService {
-  public static String accountInfoLocation;
+@Slf4j
+public class BuddyPasswordManagerService {
+
   public static MainWindow mainWindow;
 
   public BuddyPasswordManagerService() {
@@ -30,6 +32,9 @@ public final class BuddyPasswordManagerService {
   }
 
   public static void populateTable() {
+
+    log.info("Updating table data...");
+
     var row = 0;
     var col = 0;
     var filePath = new File("/Users/" + Constants.USERNAME + "/Documents/BuddyInfo.txt");
@@ -82,7 +87,8 @@ public final class BuddyPasswordManagerService {
       printOutFile.printf(website + "\n" + name + "\n" + password + "\n");
       printOutFile.close();
     } catch (IOException e) {
-      e.printStackTrace();
+
+      log.error("Error while attempt to print login data", e);
     }
   }
 }
