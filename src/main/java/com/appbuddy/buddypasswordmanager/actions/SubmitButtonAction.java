@@ -3,25 +3,22 @@ package com.appbuddy.buddypasswordmanager.actions;
 import com.appbuddy.buddypasswordmanager.configs.Constants;
 import com.appbuddy.buddypasswordmanager.services.BuddyPasswordManagerService;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
+@AllArgsConstructor
+@Data
 public class SubmitButtonAction implements ActionListener {
-  private JLabel websiteLabelWarning;
-  private JLabel usernameLabelWarning;
-  private JLabel passwordLabelWarning;
-  private JFrame frame;
 
-  public SubmitButtonAction(JLabel websiteLabelWarning,
-      JLabel usernameLabelWarning,
-      JLabel passwordLabelWarning,
-      JFrame frame) {
-    this.websiteLabelWarning = websiteLabelWarning;
-    this.usernameLabelWarning = usernameLabelWarning;
-    this.passwordLabelWarning = passwordLabelWarning;
-    this.frame = frame;
-  }
+  private final JLabel websiteLabelWarning;
+  private final JLabel usernameLabelWarning;
+  private final JLabel passwordLabelWarning;
+  private final JFrame frame;
+
   public void actionPerformed(ActionEvent e) {
     var websiteLabel = websiteLabelWarning.getText();
     var usernameLabel = usernameLabelWarning.getText();
@@ -30,17 +27,26 @@ public class SubmitButtonAction implements ActionListener {
     if(websiteLabel.isEmpty()) {
       websiteLabelWarning.setVisible(true);
     }
+
     if(usernameLabel.isEmpty()) {
       usernameLabelWarning.setVisible(true);
     }
+
     if(passwordLabel.isEmpty()) {
       passwordLabelWarning.setVisible(true);
     }
+
+    attemptSaveAndReloadWindow(websiteLabel, usernameLabel, passwordLabel);
+  }
+
+  public void attemptSaveAndReloadWindow(String websiteLabel, String usernameLabel, String passwordLabel) {
+
     if(!websiteLabel.isEmpty()
         && !usernameLabel.isEmpty()
         && !passwordLabel.isEmpty()) {
-      BuddyPasswordManagerService.saveAccount(Constants.USERNAME, websiteLabel, usernameLabel, passwordLabel);
+
       frame.setVisible(false);
+      BuddyPasswordManagerService.saveAccount(Constants.USERNAME, websiteLabel, usernameLabel, passwordLabel);
       BuddyPasswordManagerService.populateTable();
     }
   }
