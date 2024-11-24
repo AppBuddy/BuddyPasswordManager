@@ -6,10 +6,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
-@NoArgsConstructor
 @Builder
 @Data
+@NoArgsConstructor
 public class OSInfo {
+
   private OSType type;
   private String name;
   private String version;

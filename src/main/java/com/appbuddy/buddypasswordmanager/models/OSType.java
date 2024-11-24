@@ -1,5 +1,12 @@
 package com.appbuddy.buddypasswordmanager.models;
 
+/**
+ * Enum to represent possible OS options.
+ */
 public enum OSType {
-  WINDOWS, MAC, LINUX, OTHER
+
+  LINUX,
+  MAC,
+  OTHER,
+  WINDOWS
 }

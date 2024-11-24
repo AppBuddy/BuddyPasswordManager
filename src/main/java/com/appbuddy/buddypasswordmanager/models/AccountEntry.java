@@ -1,15 +1,19 @@
 package com.appbuddy.buddypasswordmanager.models;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
+/**
+ * Represents possible fields to save account information for.
+ */
 @AllArgsConstructor
+@Builder
+@Data
 @NoArgsConstructor
 public class AccountEntry {
+
   private String username;
   private String password;
   private String website;
