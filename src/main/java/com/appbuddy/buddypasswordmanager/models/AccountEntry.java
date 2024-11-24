@@ -9,8 +9,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Account {
-  private String email;
+public class AccountEntry {
+  private String username;
   private String password;
-  private String siteName;
+  private String website;
 }

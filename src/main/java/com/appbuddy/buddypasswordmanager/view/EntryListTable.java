@@ -1,7 +1,7 @@
 package com.appbuddy.buddypasswordmanager.view;
 
-import com.appbuddy.buddypasswordmanager.services.BuddyPasswordManagerService;
-
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -13,37 +13,73 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class EntryListTable extends JPanel {
+
+
   private DefaultTableModel modelTable;
   private final JTable table;
 
+  private static final String[] COLUMN_TITLES = {"Websites", "Usernames", "Passwords"};
+  private static final int TABLE_WIDTH = 600;
+  private static final int TABLE_HEIGHT = 553;
+  private static final int PANEL_HEIGHT = 600;
+  private static final int ROW_HEIGHT = 30;
+  private static final int DEFAULT_ROW_COUNT = 25;
+
   public EntryListTable() {
-    setLayout(null);
-    modelTable = new DefaultTableModel();
+
+    // Set layout and size
+    setLayout(new BorderLayout());
+    setPreferredSize(new Dimension(TABLE_WIDTH, PANEL_HEIGHT));
+
+    // Initialize table model and table
+    modelTable = new DefaultTableModel(COLUMN_TITLES, DEFAULT_ROW_COUNT);
     table = new JTable(modelTable);
-    var tableScroller = new JScrollPane(table);
-    tableScroller.setBounds(1, 1, 600, 553);
-    add(tableScroller);
-    initEntryTable();
-    setBounds(0, 0, 600, 600);
+
+    // Configure table properties
+    configureTable();
+
+    // Add table to a scroll pane and then to the panel
+    JScrollPane tableScroller = new JScrollPane(table);
+    add(tableScroller, BorderLayout.CENTER);
+  }
+
+
+  /**
+   * Configures the table properties such as selection mode, row height, and header behavior.
+   */
+  private void configureTable() {
+    table.getTableHeader().setResizingAllowed(false);
+    table.getTableHeader().setReorderingAllowed(false);
+    table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    table.setRowHeight(ROW_HEIGHT);
   }
 
   /**
+   * Adds a new row to the table with the given data.
    *
+   * @param rowData the data to be added as a new row
    */
-  public void initEntryTable() {
-    String[] colTitles = {"Websites", "Usernames", "Passwords"};
-    for (int i = 0; i < 3; i++) {
-      modelTable.addColumn(colTitles[i]);
-    }
-    table.getTableHeader().setResizingAllowed(false);
-    table.getTableHeader().setReorderingAllowed(false);
-    table.setColumnSelectionAllowed(true);
-    table.setRowSelectionAllowed(true);
-    table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-    table.setRowHeight(30);
-    modelTable.setColumnCount(3);
-    modelTable.setRowCount(25);
+  public void addRow(Object[] rowData) {
+    modelTable.addRow(rowData);
+  }
 
-    BuddyPasswordManagerService.populateTable();
+  /**
+   * Removes a row from the table at the specified index.
+   *
+   * @param rowIndex the index of the row to remove
+   */
+  public void removeRow(int rowIndex) {
+    if (rowIndex >= 0 && rowIndex < modelTable.getRowCount()) {
+      modelTable.removeRow(rowIndex);
+    } else {
+      throw new IllegalArgumentException("Invalid row index");
+    }
+  }
+
+  /**
+   * Clears all rows from the table.
+   */
+  public void clearTable() {
+    modelTable.setRowCount(0);
   }
 }

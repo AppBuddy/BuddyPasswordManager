@@ -8,6 +8,7 @@ import com.appbuddy.buddypasswordmanager.services.BuddyPasswordManagerService;
 public class App {
   public static void main(String[] args) {
 
-    var buddyPasswordManagerService = new BuddyPasswordManagerService();
+    var buddyPasswordManagerService = BuddyPasswordManagerService.getInstance();
+    buddyPasswordManagerService.initService();
   }
 }

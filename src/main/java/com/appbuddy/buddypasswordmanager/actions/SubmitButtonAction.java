@@ -52,8 +52,8 @@ public class SubmitButtonAction implements ActionListener {
         && !password.isEmpty()) {
 
       frame.setVisible(false);
-      BuddyPasswordManagerService.saveAccount(Constants.USERNAME, website, username, password);
-      BuddyPasswordManagerService.populateTable();
+      BuddyPasswordManagerService.saveAccount2(Constants.USERNAME, website, username, password);
+      BuddyPasswordManagerService.getInstance().scheduleTableReload();
     }
   }
 }
