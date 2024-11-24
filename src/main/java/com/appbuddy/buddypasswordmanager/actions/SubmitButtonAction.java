@@ -53,7 +53,7 @@ public class SubmitButtonAction implements ActionListener {
 
       frame.setVisible(false);
       BuddyPasswordManagerService.saveAccount(Constants.USERNAME, website, username, password);
-      BuddyPasswordManagerService.populateTable();
+      BuddyPasswordManagerService.getInstance().scheduleTableReload();
     }
   }
 }

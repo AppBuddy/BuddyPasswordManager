@@ -4,21 +4,22 @@ A simple password manager created in 2013.
 
 ## Setup Requirements
 
-1. Java 11
-1. Maven 3+
+1. Java 21
+2. Maven 3+
 
-## Compiling
+## Compiling & Running
 
-1. Run the following command:
+The best way to deal with this project is to use Intellij. Yes, I know that's not optimal, but it's the quickest way to
+get up and running.
 
-```bash
-    mvn clean package
-```
+If you want to compile this in your terminal use the command:
 
-## Running
+`mvn clean package`
 
-1. Run the following to open jar
+This will clean previous builds, compile code, and run test.
 
-```bash
-    java -jar target/buddypasswordmanager-{version_number}-SNAPSHOT-jar-with-dependencies.jar
-```
+For running, again I highly recommend you use Intellij. You can just hit the green play button and the application should
+run. Make sure the below is set to the main class.
+
+`com.appbuddy.buddypasswordmanager.App`
+

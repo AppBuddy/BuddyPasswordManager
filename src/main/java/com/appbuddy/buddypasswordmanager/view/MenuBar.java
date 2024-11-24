@@ -3,6 +3,8 @@ package com.appbuddy.buddypasswordmanager.view;
 import com.appbuddy.buddypasswordmanager.actions.menubar.LoadFileAction;
 import com.appbuddy.buddypasswordmanager.actions.menubar.OpenHelpMenuAction;
 import com.appbuddy.buddypasswordmanager.actions.menubar.OpenNewAction;
+import java.awt.event.ActionListener;
+import java.util.List;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -13,123 +15,95 @@ import java.awt.event.KeyEvent;
  */
 public class MenuBar extends JMenuBar {
 
-  public static final String MENU_NAME_FILE = "File";
-  public static final String MENU_ITEM_TEXT_NEW = "New";
-  public static final String MENU_ITEM_TEXT_OPEN = "Open";
-  public static final String MENU_ITEM_TEXT_SAVE = "Save";
-  public static final String MENU_ITEM_TEXT_LOAD = "Load";
-  public static final String MENU_ITEM_TEXT_EXIT = "Exit";
-
-  public static final String MENU_NAME_EDIT = "Edit";
-  public static final String MENU_ITEM_TEXT_CUT = "Cut";
-  public static final String MENU_ITEM_TEXT_COPY = "Copy";
-  public static final String MENU_ITEM_TEXT_PASTE = "Paste";
-  public static final String MENU_ITEM_TEXT_SELECT_ALL = "Select All";
-
-  public static final String MENU_NAME_VIEW = "View";
-  public static final String MENU_ITEM_TEXT_SHOW_ALL = "Show All";
-  public static final String MENU_ITEM_TEXT_HIDE_ALL = "Hide All";
-
-  public static final String MENU_NAME_HELP = "Help";
-  public static final String MENU_ITEM_TEXT_APP_BUDDY_HELP = "App Buddy Help";
-  public static final String MENU_ITEM_TEXT_APP_BUDDY_ONLINE = "App Buddy Online";
-  public static final String MENU_ITEM_TEXT_APP_CONTACT_US = "Contact Us";
-
+  /**
+   * Initializes the custom menu bar with predefined menus.
+   */
   public MenuBar() {
-    this.createMenuBar(createFileMenu(), createEditMenu(), createViewMenu(), createHelpMenu());
+    add(createFileMenu());
+    add(createEditMenu());
+    add(createViewMenu());
+    add(createHelpMenu());
   }
 
   /**
+   * Creates the "File" menu with its items and actions.
    *
-   * @return fileMenu
+   * @return the configured "File" menu
    */
-  public JMenu createFileMenu() {
-
-    var fileMenu = new JMenu(MENU_NAME_FILE);
-    fileMenu.setMnemonic(KeyEvent.VK_F); // keyboard navigation by ALT
-    var newMenuItem = new JMenuItem(MENU_ITEM_TEXT_NEW);
-    var openMenuItem = new JMenuItem(MENU_ITEM_TEXT_OPEN);
-    var saveMenuItem = new JMenuItem(MENU_ITEM_TEXT_SAVE);
-    var loadMenuItem = new JMenuItem(MENU_ITEM_TEXT_LOAD);
-    var exitMenuItem = new JMenuItem(MENU_ITEM_TEXT_EXIT);
-    newMenuItem.addActionListener(new OpenNewAction());
-    loadMenuItem.addActionListener(new LoadFileAction());
-    fileMenu.add(newMenuItem);
-    fileMenu.add(openMenuItem);
-    fileMenu.add(saveMenuItem);
-    fileMenu.add(loadMenuItem);
+  private JMenu createFileMenu() {
+    JMenu fileMenu = createMenu("File", KeyEvent.VK_F);
+    fileMenu.add(createMenuItem("New", new OpenNewAction()));
+    fileMenu.add(createMenuItem("Open", null));
+    fileMenu.add(createMenuItem("Save", null));
+    fileMenu.add(createMenuItem("Load", new LoadFileAction()));
     fileMenu.addSeparator();
-    fileMenu.add(exitMenuItem);
-
+    fileMenu.add(createMenuItem("Exit", null));
     return fileMenu;
   }
 
   /**
+   * Creates the "Edit" menu with its items.
    *
-   * @return editMenu
+   * @return the configured "Edit" menu
    */
-  public JMenu createEditMenu() {
-    var editMenu = new JMenu(MENU_NAME_EDIT);
-    editMenu.setMnemonic(KeyEvent.VK_E);
-    var cutMenuItem = new JMenuItem(MENU_ITEM_TEXT_CUT);
-    var copyMenuItem = new JMenuItem(MENU_ITEM_TEXT_COPY);
-    var pasteMenuItem = new JMenuItem(MENU_ITEM_TEXT_PASTE);
-    var selectAllMenuItem = new JMenuItem(MENU_ITEM_TEXT_SELECT_ALL);
-    editMenu.add(cutMenuItem);
-    editMenu.add(copyMenuItem);
-    editMenu.add(pasteMenuItem);
-    editMenu.addSeparator();
-    editMenu.add(selectAllMenuItem);
-
+  private JMenu createEditMenu() {
+    JMenu editMenu = createMenu("Edit", KeyEvent.VK_E);
+    List.of("Cut", "Copy", "Paste", "Select All").forEach(itemText ->
+        editMenu.add(createMenuItem(itemText, null))
+    );
     return editMenu;
   }
 
   /**
+   * Creates the "View" menu with its items.
    *
-   * @return viewMenu
+   * @return the configured "View" menu
    */
-  public JMenu createViewMenu() {
-    var viewMenu = new JMenu(MENU_NAME_VIEW);
-    viewMenu.setMnemonic(KeyEvent.VK_V);
-    var allMenuItem = new JMenuItem(MENU_ITEM_TEXT_SHOW_ALL);
-    var hidePasswordsMenuItem = new JMenuItem(MENU_ITEM_TEXT_HIDE_ALL);
-    viewMenu.add(allMenuItem);
-    viewMenu.add(hidePasswordsMenuItem);
-
+  private JMenu createViewMenu() {
+    JMenu viewMenu = createMenu("View", KeyEvent.VK_V);
+    viewMenu.add(createMenuItem("Show All", null));
+    viewMenu.add(createMenuItem("Hide All", null));
     return viewMenu;
   }
 
   /**
+   * Creates the "Help" menu with its items and actions.
    *
-   * @return helpMenu
+   * @return the configured "Help" menu
    */
-  public JMenu createHelpMenu() {
-    var helpMenu = new JMenu(MENU_NAME_HELP);
-    helpMenu.setMnemonic(KeyEvent.VK_H);
-    var helpMenuItem = new JMenuItem(MENU_ITEM_TEXT_APP_BUDDY_HELP);
-    var onlineMenuItem = new JMenuItem(MENU_ITEM_TEXT_APP_BUDDY_ONLINE);
-    var contactUsMenuItem = new JMenuItem(MENU_ITEM_TEXT_APP_CONTACT_US);
-    helpMenuItem.addActionListener(new OpenHelpMenuAction());
-    helpMenu.add(helpMenuItem);
-    helpMenu.add(onlineMenuItem);
-    helpMenu.add(contactUsMenuItem);
-
+  private JMenu createHelpMenu() {
+    JMenu helpMenu = createMenu("Help", KeyEvent.VK_H);
+    helpMenu.add(createMenuItem("App Buddy Help", new OpenHelpMenuAction()));
+    helpMenu.add(createMenuItem("App Buddy Online", null));
+    helpMenu.add(createMenuItem("Contact Us", null));
     return helpMenu;
   }
 
   /**
+   * Helper method to create a menu with a title and mnemonic key.
    *
-   * @param fileMenu
-   * @param editMenu
-   * @param viewMenu
-   * @param helpMenu
+   * @param title    the menu title
+   * @param mnemonic the mnemonic key for the menu
+   * @return the configured menu
    */
-  public void createMenuBar(JMenu fileMenu, JMenu editMenu, JMenu viewMenu, JMenu helpMenu) {
-    var menuBar = new JMenuBar();
-    menuBar.add(fileMenu);
-    menuBar.add(editMenu);
-    menuBar.add(viewMenu);
-    menuBar.add(helpMenu);
-    this.add(menuBar);
+  private JMenu createMenu(String title, int mnemonic) {
+    JMenu menu = new JMenu(title);
+    menu.setMnemonic(mnemonic);
+    return menu;
+  }
+
+  /**
+   * Helper method to create a menu item with text and an optional action listener.
+   *
+   * @param text     the menu item text
+   * @param listener the action listener for the menu item (can be null)
+   * @return the configured menu item
+   */
+  private JMenuItem createMenuItem(String text, ActionListener listener) {
+    JMenuItem menuItem = new JMenuItem(text);
+    if (listener != null) {
+      menuItem.addActionListener(listener);
+    }
+    return menuItem;
   }
 }

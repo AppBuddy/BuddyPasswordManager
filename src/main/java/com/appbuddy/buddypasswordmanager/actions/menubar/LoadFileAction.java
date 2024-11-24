@@ -10,6 +10,6 @@ import lombok.extern.slf4j.Slf4j;
 public class LoadFileAction implements ActionListener {
 
   public void actionPerformed(ActionEvent e) {
-    BuddyPasswordManagerService.populateTable();
+    BuddyPasswordManagerService.getInstance().scheduleTableReload();
   }
 }

@@ -7,7 +7,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import lombok.Data;
 
 /**
  * @author Gavin Bauman
@@ -16,7 +15,6 @@ import lombok.Data;
  * @author Adrian Smith-Thompson
  * @version 2.0
  */
-@Data
 public class HelpWindow {
 
   private final JFrame frame;
