@@ -14,10 +14,8 @@ import lombok.EqualsAndHashCode;
 @Data
 public class EntryListTable extends JPanel {
 
-
   private DefaultTableModel modelTable;
   private final JTable table;
-
   public static final String[] COLUMN_TITLES = {"Websites", "Usernames", "Passwords"};
   private static final int TABLE_WIDTH = 600;
   private static final int TABLE_HEIGHT = 553;
