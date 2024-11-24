@@ -99,6 +99,13 @@ public class BuddyPasswordManagerService {
     viewService.populateTable3();
   }
 
+  /**
+   *
+   * @param username
+   * @param website
+   * @param name
+   * @param password
+   */
   public static void saveAccount(String username, String website, String name, String password) {
     Objects.requireNonNull(username, "Username cannot be null");
     Objects.requireNonNull(website, "Website cannot be null");
@@ -132,7 +139,6 @@ public class BuddyPasswordManagerService {
       log.error("Error saving account data: ", e);
     }
   }
-
 
   /**
    * Sanitizes input strings to prevent injection attacks
