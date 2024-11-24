@@ -23,9 +23,6 @@ import lombok.extern.slf4j.Slf4j;
 public class ViewService {
 
   public MainWindow mainWindow;
-  private static final int COLUMN_COUNT = 3; // Assuming 3 columns based on original code
-  private static final String[] COLUMN_NAMES = {"Column 1", "Column 2", "Column 3"}; // Customize as needed
-
 
   public ViewService() {
     mainWindow = new MainWindow();
@@ -48,7 +45,6 @@ public class ViewService {
 
       // Verify the file exists
       if (!Files.exists(filePath)) {
-        log.error("BuddyInfo.txt not found at: {}", filePath);
         throw new IllegalStateException("BuddyInfo.txt not found");
       }
 
@@ -56,10 +52,10 @@ public class ViewService {
       List<String> lines = Files.readAllLines(filePath);
 
       // Calculate required rows based on data
-      int requiredRows = (int) Math.ceil(lines.size() / (double) COLUMN_COUNT);
+      int requiredRows = (int) Math.ceil(lines.size() / (double) EntryListTable.COLUMN_TITLES.length);
 
       // Create data matrix for the table
-      Object[][] tableData = new Object[requiredRows][COLUMN_COUNT];
+      Object[][] tableData = new Object[requiredRows][EntryListTable.COLUMN_TITLES.length];
 
       // Populate the data matrix
       int currentRow = 0;
@@ -70,7 +66,7 @@ public class ViewService {
           tableData[currentRow][currentCol] = line.trim();
 
           currentCol++;
-          if (currentCol >= COLUMN_COUNT) {
+          if (currentCol >= EntryListTable.COLUMN_TITLES.length) {
             currentCol = 0;
             currentRow++;
           }
@@ -84,7 +80,7 @@ public class ViewService {
       );
 
       // Create and set new table model
-      DefaultTableModel newModel = new DefaultTableModel(tableData, COLUMN_NAMES) {
+      DefaultTableModel newModel = new DefaultTableModel(tableData, EntryListTable.COLUMN_TITLES) {
         @Override
         public boolean isCellEditable(int row, int column) {
           return false; // Make table read-only
@@ -107,7 +103,6 @@ public class ViewService {
 
   /**
    * Populates the table with decrypted data from BuddyInfo.txt
-   * @param mainWindow the main window containing the table
    * @throws IllegalStateException if the table or model is null
    */
   public void populateTable3() {
@@ -143,7 +138,7 @@ public class ViewService {
       }
 
       // Create data matrix for the table
-      Object[][] tableData = new Object[decryptedEntries.size()][COLUMN_COUNT];
+      Object[][] tableData = new Object[decryptedEntries.size()][EntryListTable.COLUMN_TITLES.length];
 
       // Populate the data matrix
       for (int i = 0; i < decryptedEntries.size(); i++) {
@@ -160,7 +155,7 @@ public class ViewService {
       );
 
       // Create and set new table model with custom cell editing rules
-      DefaultTableModel newModel = new DefaultTableModel(tableData, COLUMN_NAMES) {
+      DefaultTableModel newModel = new DefaultTableModel(tableData, EntryListTable.COLUMN_TITLES) {
         @Override
         public boolean isCellEditable(int row, int column) {
           return false; // Make table read-only
@@ -220,7 +215,7 @@ public class ViewService {
   public static void clearTable(MainWindow mainWindow) {
     try {
       EntryListTable entryListTable = Objects.requireNonNull(mainWindow.getEntryListTable());
-      DefaultTableModel model = new DefaultTableModel(COLUMN_NAMES, 0);
+      DefaultTableModel model = new DefaultTableModel(EntryListTable.COLUMN_TITLES, 0);
 
       javax.swing.SwingUtilities.invokeLater(() -> {
         entryListTable.setModelTable(model);
