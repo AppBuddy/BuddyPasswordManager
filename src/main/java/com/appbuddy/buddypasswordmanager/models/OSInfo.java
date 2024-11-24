@@ -1,13 +1,19 @@
 package com.appbuddy.buddypasswordmanager.models;
 
-import lombok.Value;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Value
-public  class OSInfo {
-  OSType type;
-  String name;
-  String version;
-  String architecture;
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Data
+public class OSInfo {
+  private OSType type;
+  private String name;
+  private String version;
+  private String architecture;
 
   @Override
   public String toString() {
