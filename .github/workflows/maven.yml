@@ -3,11 +3,19 @@
 
 name: Java CI with Maven
 
-on: [push, pull_request]
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+    paths-ignore: # Optional: ignore pushes to non-code files
+      - '**/*.md'
+      - '**/*.txt'
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
